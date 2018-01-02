@@ -14,15 +14,15 @@ class HelloCNN:
 
         x = tf.placeholder(tf.float32, [None, 48, 48, 1])
 
-        conv1 = tf.layers.conv2d(inputs=x, filters=64, kernel_size=[5, 5], padding="same", activation=tf.nn.relu)
-        pool1 = tf.layers.max_pooling2d(inputs=conv1, pool_size=[5, 5], strides=2)
+        conv1 = tf.layers.conv2d(inputs=x, filters=64, kernel_size=[5, 5], padding="valid", activation=tf.nn.relu)
+        pool1 = tf.layers.max_pooling2d(inputs=conv1, pool_size=[5, 5], strides=2, padding="same")
         out1 = pool1
 
         conv2 = tf.layers.conv2d(inputs=out1, filters=64, kernel_size=[3, 3], padding="same", activation=tf.nn.relu)
         # pool2 = tf.layers.max_pooling2d(inputs=conv2, pool_size=[2, 2], strides=2)
         out2 = conv2
 
-        conv3 = tf.layers.conv2d(inputs=out2, filters=64, kernel_size=[5, 5], padding="same", activation=tf.nn.relu)
+        conv3 = tf.layers.conv2d(inputs=out2, filters=64, kernel_size=[3, 3], padding="same", activation=tf.nn.relu)
         pool3 = tf.layers.average_pooling2d(inputs=conv3, pool_size=[3, 3], strides=2)
         out3 = pool3
 

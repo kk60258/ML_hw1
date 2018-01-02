@@ -2,7 +2,7 @@ import csv
 import numpy as np
 
 def load_train_data():
-    train_file_path='./dataset/train_ori.csv'
+    train_file_path='./dataset/train.csv'
     train_labels=[]
     train_pixels=[]
 
@@ -25,6 +25,9 @@ def load_train_data():
 
             train_pixels_array = np.array(train_pixels)
             train_labels_array = np.array(train_labels)
+
+            if len(train_labels_array) > 10000:
+                break
 
     print("train pixel shape {}".format(train_pixels_array.shape))
     print("train label shape {}".format(train_labels_array.shape))
